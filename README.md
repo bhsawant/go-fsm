@@ -95,6 +95,8 @@ finalState, _, err := engine.Process("1101") // Returns "S1" (Remainder 1)
 
 The library is thoroughly tested with table-driven tests to ensure correctness of both the generic engine and the Modulo-Three logic.
 
+To run tests and see detailed output every time, execute the following command from the **project root folder**:
+
 ```bash
-go test ./fsm/...
+go test -v -count=1 ./...
 ```

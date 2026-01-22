@@ -76,6 +76,10 @@ func TestEngine_Process(t *testing.T) {
 		// --- Error Cases ---
 		{"Error: Invalid Char", engineSetup{[]State{"S0"}, []rune{'0'}, "S0", []State{"S0"}, mod3TranFunc}, "2", "", false, true},
 		{"Error: Bad Transition", engineSetup{[]State{"S0"}, []rune{'0'}, "S0", []State{"S0"}, invalidTranFunc}, "0", "", false, true},
+
+		// --- Edge Cases ---
+		{"Edge: Empty Input", engineSetup{[]State{"S0", "S1"}, []rune{'0', '1'}, "S0", []State{"S0"}, mod3TranFunc}, "", "S0", true, false},
+		{"Edge: Multiple Transitions", engineSetup{[]State{"S0", "S1", "S2"}, []rune{'0', '1'}, "S0", []State{"S0", "S1", "S2"}, mod3TranFunc}, "110", "S0", true, false},
 	}
 
 	for _, tc := range tests {
