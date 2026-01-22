@@ -22,6 +22,14 @@ The `fsm` package allows developers to create custom FSMs by defining their own 
 2.  **`StateTransitionFunc`**: A function signature `func(State, rune) State` that implements the transition logic (δ).
 3.  **`Engine`**: The core component that holds the FSM configuration and processes input strings.
 
+## Installation
+
+To use this library in your Go project, run:
+
+```bash
+go get github.com/bhsawant/go-fsm/fsm
+```
+
 ## API Usage
 
 ### 1. Initialize the Engine
