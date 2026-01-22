@@ -74,12 +74,13 @@ func TestEngine_Process(t *testing.T) {
 		{"Mod2: 11 (Odd)", engineSetup{[]State{"S0", "S1"}, []rune{'0', '1'}, "S0", []State{"S0"}, mod2TranFunc}, "11", "S1", false, false},
 
 		// --- Error Cases ---
-		{"Error: Invalid Char", engineSetup{[]State{"S0"}, []rune{'0'}, "S0", []State{"S0"}, mod3TranFunc}, "2", "", false, true},
+		{"Error: Invalid Char (input 2 - non binary)", engineSetup{[]State{"S0"}, []rune{'0'}, "S0", []State{"S0"}, mod3TranFunc}, "2", "", false, true},
 		{"Error: Bad Transition", engineSetup{[]State{"S0"}, []rune{'0'}, "S0", []State{"S0"}, invalidTranFunc}, "0", "", false, true},
 
 		// --- Edge Cases ---
 		{"Edge: Empty Input", engineSetup{[]State{"S0", "S1"}, []rune{'0', '1'}, "S0", []State{"S0"}, mod3TranFunc}, "", "S0", true, false},
-		{"Edge: Multiple Transitions", engineSetup{[]State{"S0", "S1", "S2"}, []rune{'0', '1'}, "S0", []State{"S0", "S1", "S2"}, mod3TranFunc}, "110", "S0", true, false},
+		{"Edge: Multiple Transitions input:110 (decimal 6)", engineSetup{[]State{"S0", "S1", "S2"}, []rune{'0', '1'}, "S0", []State{"S0", "S1", "S2"}, mod3TranFunc}, "110", "S0", true, false},
+		{"Edge: Large value input:11111111111111111111111111111111 (decimal 4,294,967,295)", engineSetup{[]State{"S0", "S1", "S2"}, []rune{'0', '1'}, "S0", []State{"S0", "S1", "S2"}, mod3TranFunc}, "11111111111111111111111111111111", "S0", true, false},
 	}
 
 	for _, tc := range tests {
