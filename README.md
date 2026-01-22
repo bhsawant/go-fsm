@@ -58,6 +58,8 @@ As a practical application of this library, we implement a modulo-three function
     *   δ(S2, 0) = S1
     *   δ(S2, 1) = S2
 
+The full implementation of this example can be found in [main.go](main.go).
+
 ### Code Snippet
 
 ```go
@@ -100,3 +102,4 @@ To run tests and see detailed output every time, execute the following command f
 ```bash
 go test -v -count=1 ./...
 ```
+The `fsm.go` file has 100% code coverage.
